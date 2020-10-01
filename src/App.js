@@ -25,27 +25,26 @@ function App() {
     return result;
   };
 
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     binaryConverter(number);
-    setNumber();
-    console.log(number);
+    setNumber('');
   };
 
   return (
     <div className="App">
       <h1>Binary digit to Decimal converter</h1>
-      <form onSubmit={handleClick}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="inputField">Type binary digits here: </label>
         <input
           id="inputField"
           type="number"
           value={number}
-          onChange={(event) => setNumber(event.target.value)}
+          onChange={(e) => setNumber(e.target.value)}
         />
         <button type="submit">convert</button>
       </form>
-      <h3>Result: {binary}</h3>
+      <h2>Result: {binary}</h2>
     </div>
   );
 }
