@@ -6,13 +6,13 @@ function BorderRadiusPreview() {
   const [margin, setMargin] = useState(25);
   const [unit, setUnit] = useState('%');
   const [width, setWidth] = useState(150);
-  const [height, setHeight] = useState();
+  const [height, setHeight] = useState(170);
 
   const boxStyle = {
     borderRadius: `${radius}${unit}`,
     margin: `${margin}px auto`,
     width: `${width}px`,
-    height: '150px',
+    height: `${height}px`,
     border: '3px solid rgb(184, 4, 4)',
   };
 
@@ -33,20 +33,19 @@ function BorderRadiusPreview() {
             defaultValue="15"
             onChange={(e) => setRadius(e.target.value)}
           />
+
+          <form
+            onChange={(e) => {
+              setUnit(e.target.value);
+            }}
+          >
+            <label htmlFor="percent">Percent </label>
+            <input id="percent" name="type" type="radio" value="%" />
+            <label htmlFor="pixels">Pixels </label>
+            <input id="pixels" name="type" type="radio" value="px" />
+          </form>
         </div>
-        <div className={styles.sliderBox}>
-          <label htmlFor="margin">Margin (between 0 and 50):</label>
-          <input
-            className={styles.slider}
-            id="margin"
-            type="range"
-            min="0"
-            max="50"
-            defaultValue="25"
-            step="5"
-            onChange={(e) => setMargin(e.target.value)}
-          />
-        </div>
+
         <div className={styles.sliderBox}>
           <label htmlFor="width">Width (between 60 and 300):</label>
           <input
@@ -60,22 +59,40 @@ function BorderRadiusPreview() {
             onChange={(e) => setWidth(e.target.value)}
           />
         </div>
+        <div className={styles.sliderBox}>
+          <label htmlFor="heigth">Heigth (between 60 and 300):</label>
+          <input
+            className={styles.slider}
+            id="width"
+            type="range"
+            min="60"
+            max="300"
+            defaultValue="170"
+            step="5"
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </div>
 
-        <form
-          onChange={(e) => {
-            setUnit(e.target.value);
-          }}
-        >
-          <label htmlFor="percent">Percent </label>
-          <input id="percent" name="type" type="radio" value="%" />
-          <label htmlFor="pixels">Pixels </label>
-          <input id="pixels" name="type" type="radio" value="px" />
-        </form>
+        <div className={styles.sliderBox}>
+          <label htmlFor="margin">Margin (between 0 and 50):</label>
+          <input
+            className={styles.slider}
+            id="margin"
+            type="range"
+            min="0"
+            max="50"
+            defaultValue="25"
+            step="5"
+            onChange={(e) => setMargin(e.target.value)}
+          />
+        </div>
+
         <hr></hr>
         <div style={{ display: 'inline' }}>
           <h4>Radius {radius}% </h4>
           <h4>Margin {margin}px </h4>
           <h4>Width {width}px </h4>
+          <h4>Heigth {height}px </h4>
         </div>
       </div>
       <div className={styles.preview}>

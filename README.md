@@ -1,10 +1,13 @@
-# Binary to Decimal converter
+# Coding Practice widgets
 
 ## Description
 
-Converts binary numbers to decimal numbers.
+[ ] Converts binary numbers to decimal numbers.
 
 From [github app ideas](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Bin2Dec-App.md)
+
+[ ] Border-radius preview widget.
+From [github app ideas](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Border-Radius-Previewer.md)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
