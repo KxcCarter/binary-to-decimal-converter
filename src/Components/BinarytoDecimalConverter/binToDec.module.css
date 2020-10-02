@@ -1,0 +1,10 @@
+.widgetBody {
+  padding: 15px;
+  margin: -16px;
+  background-color: #008c8c10;
+  background-image: url('https://www.transparenttextures.com/patterns/3px-tile.png');
+}
+.label {
+  font-weight: bold;
+  background-color: rgba(255, 245, 238, 0.664);
+}
