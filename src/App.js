@@ -4,6 +4,7 @@ import './App.css';
 // Other Challenges
 import BinaryToDecimalConverter from './Components/BinarytoDecimalConverter/BinarytoDecimalConverter';
 import BorderRadiusPreview from './Components/BorderRadiusPreview/BorderRadiusPreview';
+import Calculator from './Components/Calculator/Calculator';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <hr className="app-hr"></hr>
       <BorderRadiusPreview />
       <hr className="app-hr"></hr>
+
+      <Calculator />
     </div>
   );
 }
