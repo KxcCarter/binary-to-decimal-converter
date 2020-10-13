@@ -1,6 +1,6 @@
 .calculatorBody {
-  width: 500px;
-  height: 600px;
+  width: 75%;
+  height: 95%;
   border: 4px solid rgb(61, 60, 60);
   border-radius: 20px;
   position: relative;
@@ -18,48 +18,25 @@
 }
 
 .calcDispNums {
-  /* justify-content: right; */
   float: right;
   margin-right: 7px;
   font-family: monospace;
-  font-size: xx-large;
+  font-size: 3rem;
 }
-
-/* .buttonContainer {
-  width: 75%;
-  height: 320px;
-  margin: auto;
-  border: 2px dotted black;
-  position: relative;
-  top: 40px;
-  flex: auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.calcButtons {
-  width: 15%;
-  height: 35px;
-  margin: 5px;
-  border: 1px solid black;
-  border-radius: 30%;
-  background-color: lightslategray;
-  box-shadow: 1px 3px 3px #312f2f;
-}
-
-.calcButtons:hover {
-  box-shadow: 0 1px 1px #4d4a4a;
-} */
 
 table {
   border-spacing: 1rem;
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2vw;
+  background-color: rgba(210, 180, 140, 0.151);
+  border-radius: 5px 5px 20px 20px;
+  margin: auto;
+  width: 100%;
 }
 
 td {
-  min-width: 3rem;
-  padding: 10px;
+  width: 25%;
+  padding: 2%;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 1px 3px 3px #312f2f;
@@ -74,14 +51,4 @@ td:hover {
 .numberBtns {
   color: grey;
   background-color: #002e5f;
-}
-
-.calcBody {
-  width: 90%;
-  text-align: center;
-  position: relative;
-  left: 25px;
-  /* top: 10px; */
-  background-color: rgba(210, 180, 140, 0.151);
-  border-radius: 15px;
 }

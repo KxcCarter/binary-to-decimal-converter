@@ -1,62 +1,129 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../Calculator/calculator.module.css';
 
 function Calculator() {
+  const [display, setDisplay] = useState([]);
+  const [num1, setNum1] = useState([]);
+  const [num2, setNum2] = useState([]);
+  const [operand, setOperand] = useState(null);
+  const [waitingForOperand, setWaitingForOperand] = useState(true);
+
+  useEffect(() => {}, [display, num1, num2, operand, waitingForOperand]);
+
+  const inputNumber = (event) => {
+    if (waitingForOperand) {
+      setNum1([...num1, event]);
+      setDisplay(num1);
+    } else {
+      setNum2([...num2, event]);
+      setDisplay(num2);
+    }
+  };
+
+  const handleClick = (event) => {
+    console.log({ event });
+  };
+
+  const clearAll = () => {
+    setDisplay([]);
+    setNum1([]);
+    setNum2([]);
+    setOperand(null);
+    setWaitingForOperand(true);
+  };
+
   return (
     <div className="widget">
       <div className={styles.calculatorBody}>
         <div className={styles.calcDisplay}>
-          <h1 className={styles.calcDispNums}>100100</h1>
+          <h1 className={styles.calcDispNums}>{display}</h1>
         </div>
-        {/* <div className={styles.buttonContainer}>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-          <div className={styles.calcButtons}>0</div>
-        </div> */}
-
-        <div className={styles.calcBody}>
+        <div>
           <table>
             <tbody>
-              <tr align="left">
-                <td>^n</td>
-                <td>C</td>
-              </tr>
               <tr>
-                <td className="numberBtns">7</td>
-                <td className="numberBtns">8</td>
-                <td className="numberBtns">9</td>
-                <td>%</td>
+                <td onClick={clearAll}>C</td>
                 <td>+/-</td>
+                <td>%</td>
+                <td>/</td>
               </tr>
               <tr>
-                <td className="numberBtns">4</td>
-                <td className="numberBtns">5</td>
-                <td className="numberBtns">6</td>
-                <td>✖️</td>
-                <td>➗</td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(7)}
+                  value="7"
+                >
+                  7
+                </td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(8)}
+                  value="8"
+                >
+                  8
+                </td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(9)}
+                  value="9"
+                >
+                  9
+                </td>
+                <td onClick={() => handleClick('*')} value="*">
+                  *
+                </td>
               </tr>
               <tr>
-                <td className="numberBtns">1</td>
-                <td className="numberBtns">2</td>
-                <td className="numberBtns">3</td>
-                <td rowspan="2">➕</td>
-                <td>➖</td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(4)}
+                >
+                  4
+                </td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(5)}
+                >
+                  5
+                </td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(6)}
+                >
+                  6
+                </td>
+                <td>-</td>
               </tr>
               <tr>
-                <td className="numberBtns">0</td>
-                <td className="numberBtns">00</td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(1)}
+                >
+                  1
+                </td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(2)}
+                >
+                  2
+                </td>
+                <td
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(3)}
+                >
+                  3
+                </td>
+                <td>+</td>
+              </tr>
+              <tr>
+                <td
+                  colSpan="2"
+                  className={styles.numberBtns}
+                  onClick={() => inputNumber(0)}
+                >
+                  0
+                </td>
+
                 <td>.</td>
                 <td>=</td>
               </tr>
