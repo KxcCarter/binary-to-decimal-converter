@@ -3,25 +3,43 @@ import styles from '../Calculator/calculator.module.css';
 
 function Calculator() {
   const [display, setDisplay] = useState([]);
-  const [num1, setNum1] = useState([]);
-  const [num2, setNum2] = useState([]);
+  const [num1, setNum1] = useState('');
+  const [num2, setNum2] = useState('');
   const [operand, setOperand] = useState(null);
   const [waitingForOperand, setWaitingForOperand] = useState(true);
 
-  useEffect(() => {}, [display, num1, num2, operand, waitingForOperand]);
-
-  const inputNumber = (event) => {
-    if (waitingForOperand) {
-      setNum1([...num1, event]);
+  const updateDisplay = (input) => {
+    if (!operand) {
       setDisplay(num1);
     } else {
-      setNum2([...num2, event]);
       setDisplay(num2);
     }
   };
 
+  useEffect(() => {
+    updateDisplay();
+  }, [num1, num2, operand, waitingForOperand]);
+
+  const inputNumber = (event) => {
+    if (!operand) {
+      setNum1(num1 + event);
+      // setDisplay(num1);
+    } else {
+      updateDisplay(event);
+      setNum2(num2 + event);
+      // setDisplay(num2);
+    }
+  };
+
   const handleClick = (event) => {
+    setOperand(event);
     console.log({ event });
+  };
+
+  const doMath = () => {
+    let result = parseInt(num1) * parseInt(num2);
+    console.log({ result });
+    setDisplay(result);
   };
 
   const clearAll = () => {
@@ -35,6 +53,7 @@ function Calculator() {
   return (
     <div className="widget">
       <div className={styles.calculatorBody}>
+        {/* displays inputted number */}
         <div className={styles.calcDisplay}>
           <h1 className={styles.calcDispNums}>{display}</h1>
         </div>
@@ -125,7 +144,7 @@ function Calculator() {
                 </td>
 
                 <td>.</td>
-                <td>=</td>
+                <td onClick={doMath}>=</td>
               </tr>
             </tbody>
           </table>
